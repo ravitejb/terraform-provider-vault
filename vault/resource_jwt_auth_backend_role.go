@@ -523,15 +523,15 @@ func jwtAuthBackendRoleDataToWrite(d *schema.ResourceData, create bool) map[stri
 		boundClaims := make(map[string]interface{})
 		for key, val := range v.(map[string]interface{}) {
 			valStr := val.(string)
-			if strings.Contains(valStr, ",") {
-				vals := strings.Split(valStr, ",")
-				for i := range vals {
-					vals[i] = strings.TrimSpace(vals[i])
-				}
-				boundClaims[key] = vals
-			} else {
-				boundClaims[key] = valStr
-			}
+			// if strings.Contains(valStr, ",") {
+			// 	vals := strings.Split(valStr, ",")
+			// 	for i := range vals {
+			// 		vals[i] = strings.TrimSpace(vals[i])
+			// 	}
+			// 	boundClaims[key] = vals
+			// } else {
+			boundClaims[key] = valStr
+			// }
 		}
 		data["bound_claims"] = boundClaims
 	}
